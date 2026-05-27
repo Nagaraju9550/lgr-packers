@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LGR Packers and Movers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #FF6B00;
+      --dark-orange: #cc5500;
+      --navy: #0B1F3A;
+      --navy2: #142748;
+      --white: #fff;
+      --light: #F5F7FA;
+      --text: #222;
+      --muted: #666;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+      height: 64px;
+      box-shadow: 0 2px 20px rgba(0,0,0,.35);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem; letter-spacing: 2px;
+      color: var(--orange);
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: #ccd; text-decoration: none; font-weight: 700;
+      font-size: .9rem; letter-spacing: 1px; text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 60%, var(--navy2) 100%);
+      display: flex; align-items: center;
+      padding: 80px 5vw 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; top: -80px; right: -80px;
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, var(--orange) 0%, transparent 70%);
+      opacity: .12;
+    }
+    #hero::after {
+      content: '📦';
+      position: absolute; bottom: 40px; right: 6vw;
+      font-size: 14rem; opacity: .07;
+      animation: float 5s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100%{transform:translateY(0)} 50%{transform:translateY(-24px)}
+    }
+
+    .hero-content { max-width: 620px; animation: fadeUp .8s ease both; }
+    @keyframes fadeUp {
+      from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:none}
+    }
+    .hero-badge {
+      display: inline-block; background: var(--orange);
+      color: #fff; font-size: .75rem; font-weight: 900;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 4px 14px; border-radius: 2px; margin-bottom: 1.2rem;
+    }
+    .hero-content h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      color: var(--white); line-height: 1;
+      letter-spacing: 3px;
+    }
+    .hero-content h1 span { color: var(--orange); }
+    .hero-content p {
+      color: #a8b8d0; margin: 1.2rem 0 2rem;
+      font-size: 1.1rem; line-height: 1.7;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .75rem 1.8rem; border-radius: 4px;
+      font-weight: 900; font-size: .95rem; letter-spacing: 1px;
+      text-decoration: none; text-transform: uppercase;
+      transition: all .2s;
+    }
+    .btn-primary { background: var(--orange); color: #fff; }
+    .btn-primary:hover { background: var(--dark-orange); transform: translateY(-2px); }
+    .btn-ghost { border: 2px solid rgba(255,255,255,.3); color: #fff; }
+    .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      background: var(--orange);
+      display: flex; justify-content: center; flex-wrap: wrap;
+      gap: 0;
+    }
+    .stat {
+      padding: 1.4rem 3rem;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,.25);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem; color: #fff; line-height: 1;
+    }
+    .stat-label { color: rgba(255,255,255,.85); font-size: .8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 80px 5vw; }
+    .section-tag {
+      color: var(--orange); font-weight: 900; font-size: .8rem;
+      letter-spacing: 3px; text-transform: uppercase; display: block;
+      margin-bottom: .5rem;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--navy); letter-spacing: 2px; line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .section-sub { color: var(--muted); max-width: 540px; line-height: 1.7; }
+
+    /* ── SERVICES ── */
+    #services { background: var(--light); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .service-card {
+      background: #fff; border-radius: 8px;
+      padding: 2rem; text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,.06);
+      transition: transform .25s, box-shadow .25s;
+      border-top: 4px solid var(--orange);
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,.12); }
+    .service-icon { font-size: 2.6rem; margin-bottom: 1rem; }
+    .service-card h3 { font-weight: 900; font-size: 1.05rem; margin-bottom: .5rem; color: var(--navy); }
+    .service-card p { color: var(--muted); font-size: .9rem; line-height: 1.6; }
+
+    /* ── WHY US ── */
+    #why { background: var(--navy); }
+    #why .section-title { color: var(--white); }
+    #why .section-sub { color: #8faac0; }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .why-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 8px; padding: 1.8rem;
+      transition: background .2s;
+    }
+    .why-card:hover { background: rgba(255,107,0,.12); border-color: var(--orange); }
+    .why-icon { font-size: 2rem; margin-bottom: .8rem; }
+    .why-card h3 { color: var(--white); font-weight: 900; font-size: 1rem; margin-bottom: .4rem; }
+    .why-card p { color: #8faac0; font-size: .875rem; line-height: 1.6; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--light); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem; margin-top: 3rem;
+    }
+    @media(max-width:720px){ .contact-grid{grid-template-columns:1fr;} }
+
+    .contact-info h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem; color: var(--navy); letter-spacing: 1px;
+      margin-bottom: 1.5rem;
+    }
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      margin-bottom: 1.4rem;
+    }
+    .contact-item-icon {
+      width: 44px; height: 44px; border-radius: 8px;
+      background: var(--orange); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .contact-item-text a {
+      display: block; color: var(--text); text-decoration: none;
+      font-weight: 700; font-size: 1rem;
+      transition: color .2s;
+    }
+    .contact-item-text a:hover { color: var(--orange); }
+    .contact-item-text small { color: var(--muted); font-size: .8rem; }
+
+    /* WhatsApp buttons */
+    .wa-btns { display: flex; flex-direction: column; gap: .7rem; margin-top: 1.8rem; }
+    .wa-btn {
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: #25D366; color: #fff;
+      padding: .7rem 1.4rem; border-radius: 6px;
+      text-decoration: none; font-weight: 900; font-size: .95rem;
+      transition: background .2s, transform .2s;
+      width: fit-content;
+    }
+    .wa-btn:hover { background: #1da851; transform: translateY(-2px); }
+
+    /* Quote form */
+    .quote-form {
+      background: #fff; border-radius: 10px;
+      padding: 2rem; box-shadow: 0 6px 28px rgba(0,0,0,.08);
+    }
+    .quote-form h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem; color: var(--navy); letter-spacing: 1px;
+      margin-bottom: 1.2rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+    @media(max-width:480px){ .form-row{grid-template-columns:1fr;} }
+    .form-group { margin-bottom: .8rem; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; padding: .7rem 1rem;
+      border: 1.5px solid #dde; border-radius: 6px;
+      font-family: inherit; font-size: .95rem;
+      outline: none; transition: border .2s;
+      background: #fafbff;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--orange); }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-submit {
+      width: 100%; padding: .85rem;
+      background: var(--orange); color: #fff;
+      border: none; border-radius: 6px; cursor: pointer;
+      font-family: inherit; font-weight: 900; font-size: 1rem;
+      letter-spacing: 1px; text-transform: uppercase;
+      transition: background .2s, transform .2s;
+    }
+    .form-submit:hover { background: var(--dark-orange); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: #8faac0;
+      text-align: center;
+      padding: 2rem 5vw;
+    }
+    footer .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem; color: var(--orange); letter-spacing: 3px;
+    }
+    footer p { font-size: .85rem; margin-top: .5rem; }
+    footer a { color: var(--orange); text-decoration: none; }
+
+    /* ── MOBILE NAV ── */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 26px; height: 2px; background: var(--white); border-radius: 2px; transition: .3s; }
+    @media(max-width: 640px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        position: fixed; top: 64px; left: 0; width: 100%;
+        background: var(--navy); flex-direction: column;
+        padding: 1.5rem 5vw; gap: 1.2rem;
+        transform: translateY(-120%); transition: transform .35s;
+      }
+      .nav-links.open { transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">LGR Packers</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Trusted Packers &amp; Movers</div>
+    <h1>LGR<br/><span>Packers &amp;</span><br/>Movers</h1>
+    <p>Safe, fast &amp; affordable shifting across India.<br/>Your belongings — our responsibility.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">📞 Get Free Quote</a>
+      <a href="https://wa.me/917680089494" target="_blank" class="btn btn-ghost">💬 WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Happy Customers</div></div>
+  <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Years Experience</div></div>
+  <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Cities Covered</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Safe Delivery</div></div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <span class="section-tag">What We Offer</span>
+  <h2 class="section-title">Our Services</h2>
+  <p class="section-sub">From household goods to office equipment — we handle every move with care and professionalism.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🏠</div>
+      <h3>Home Shifting</h3>
+      <p>Complete home relocation with careful packing, loading, transport &amp; unpacking.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏢</div>
+      <h3>Office Shifting</h3>
+      <p>Hassle-free office moves with minimal downtime and zero damage guarantee.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🚛</div>
+      <h3>Intercity Transport</h3>
+      <p>Reliable goods transport across cities with GPS-tracked vehicles.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📦</div>
+      <h3>Packing Services</h3>
+      <p>Professional packing using high-quality materials for fragile &amp; heavy items.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛋️</div>
+      <h3>Furniture Moving</h3>
+      <p>Disassembly, safe transport &amp; reassembly of all types of furniture.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏪</div>
+      <h3>Storage Solutions</h3>
+      <p>Secure short &amp; long-term storage facilities for all your goods.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <span class="section-tag" style="color:var(--orange)">Why Choose Us</span>
+  <h2 class="section-title">We Move You,<br/>We Care Too</h2>
+  <p class="section-sub" style="color:#8faac0">We are committed to making your shifting experience smooth, stress-free &amp; safe.</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">✅</div>
+      <h3>Licensed &amp; Trusted</h3>
+      <p>Fully registered business with years of hands-on moving experience.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💰</div>
+      <h3>Affordable Rates</h3>
+      <p>Transparent pricing — no hidden charges, no surprises at delivery.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🔒</div>
+      <h3>Safe &amp; Secure</h3>
+      <p>Premium packing materials and careful handling of every item.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">⏱️</div>
+      <h3>On-Time Delivery</h3>
+      <p>We respect your time and ensure deliveries are on schedule.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📍</div>
+      <h3>Pan India Service</h3>
+      <p>Operating across 50+ cities throughout India.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🤝</div>
+      <h3>24/7 Support</h3>
+      <p>Our team is always available via phone or WhatsApp to help you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <span class="section-tag">Reach Us</span>
+  <h2 class="section-title">Contact &amp; Free Quote</h2>
+  <p class="section-sub">Call us, WhatsApp us, or fill the form — we'll get back to you instantly!</p>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>Get In Touch</h3>
+
+      <div class="contact-item">
+        <div class="contact-item-icon">👤</div>
+        <div class="contact-item-text">
+          <a href="#">Lachhannagari Gangadhar Yadav</a>
+          <small>Owner &amp; Director</small>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-item-icon">📞</div>
+        <div class="contact-item-text">
+          <a href="tel:+917680089494">+91 76800 89494</a>
+          <a href="tel:+919347440055">+91 93474 40055</a>
+          <small>Both numbers on WhatsApp</small>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-item-icon">✉️</div>
+        <div class="contact-item-text">
+          <a href="mailto:lgrpackersandmovers76@gmail.com">lgrpackersandmovers76@gmail.com</a>
+          <small>Email us anytime</small>
+        </div>
+      </div>
+
+      <div class="wa-btns">
+        <a href="https://wa.me/917680089494?text=Hello%20LGR%20Packers%2C%20I%20need%20a%20moving%20quote." target="_blank" class="wa-btn">
+          💬 WhatsApp: 76800 89494
+        </a>
+        <a href="https://wa.me/919347440055?text=Hello%20LGR%20Packers%2C%20I%20need%20a%20moving%20quote." target="_blank" class="wa-btn">
+          💬 WhatsApp: 93474 40055
+        </a>
+      </div>
+    </div>
+
+    <div class="quote-form">
+      <h3>Request Free Quote</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <input type="text" placeholder="Your Name" required/>
+        </div>
+        <div class="form-group">
+          <input type="tel" placeholder="Phone Number" required/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <input type="text" placeholder="Moving From (City)"/>
+        </div>
+        <div class="form-group">
+          <input type="text" placeholder="Moving To (City)"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <select>
+          <option value="">Select Service</option>
+          <option>Home Shifting</option>
+          <option>Office Shifting</option>
+          <option>Intercity Transport</option>
+          <option>Furniture Moving</option>
+          <option>Storage Solutions</option>
+          <option>Packing Only</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <input type="date"/>
+      </div>
+      <div class="form-group">
+        <textarea placeholder="Additional details (optional)"></textarea>
+      </div>
+      <button class="form-submit" onclick="sendQuote()">Send via WhatsApp 📲</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">LGR Packers &amp; Movers</div>
+  <p>Owner: Lachhannagari Gangadhar Yadav &nbsp;|&nbsp;
+     <a href="tel:+917680089494">76800 89494</a> &nbsp;|&nbsp;
+     <a href="tel:+919347440055">93474 40055</a>
+  </p>
+  <p style="margin-top:.4rem">
+    <a href="mailto:lgrpackersandmovers76@gmail.com">lgrpackersandmovers76@gmail.com</a>
+  </p>
+  <p style="margin-top:1rem;font-size:.78rem;opacity:.6">&copy; 2024 LGR Packers &amp; Movers. All rights reserved.</p>
+</footer>
+
+<script>
+  function toggleNav(){
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  function sendQuote(){
+    const inputs = document.querySelectorAll('.quote-form input, .quote-form select, .quote-form textarea');
+    const name = inputs[0].value || 'Customer';
+    const phone = inputs[1].value || '';
+    const from = inputs[2].value || 'N/A';
+    const to = inputs[3].value || 'N/A';
+    const service = inputs[4].value || 'General';
+    const date = inputs[5].value || 'N/A';
+    const notes = inputs[6].value || '';
+
+    const msg = encodeURIComponent(
+      `Hello LGR Packers and Movers!\n\n` +
+      `Name: ${name}\nPhone: ${phone}\nFrom: ${from}\nTo: ${to}\n` +
+      `Service: ${service}\nDate: ${date}\nNotes: ${notes}\n\nPlease provide a free quote.`
+    );
+    window.open(`https://wa.me/917680089494?text=${msg}`, '_blank');
+  }
+
+  // Smooth scroll for nav links on mobile
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.addEventListener('click',()=>{
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>
