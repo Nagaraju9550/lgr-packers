@@ -33,14 +33,18 @@
       position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
       background: var(--navy);
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 5vw;
+      padding: 0 4vw;
       height: 64px;
       box-shadow: 0 2px 20px rgba(0,0,0,.35);
+      overflow: visible;
     }
     .nav-logo {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 1.6rem; letter-spacing: 2px;
       color: var(--orange);
+      white-space: nowrap;
+      overflow: visible;
+      flex-shrink: 0;
     }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
@@ -285,7 +289,7 @@
         height: 60px;
       }
       .nav-logo {
-        font-size: 1.25rem;
+        font-size: 1.2rem;
         letter-spacing: 1px;
       }
       .hamburger { display: flex; }
@@ -538,14 +542,16 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">LGR Packers &amp; Movers</div>
-  <p>Owner: Lachhannagari Gangadhar Yadav &nbsp;|&nbsp;
-     <a href="tel:+917680089494">76800 89494</a> &nbsp;|&nbsp;
-     <a href="tel:+919347440055">93474 40055</a>
-  </p>
-  <p style="margin-top:.4rem">
-    <a href="mailto:lgrpackersandmovers76@gmail.com">lgrpackersandmovers76@gmail.com</a>
-  </p>
-  <p style="margin-top:1rem;font-size:.78rem;opacity:.6">&copy; 2024 LGR Packers &amp; Movers. All rights reserved.</p>
+  <p style="margin-top:.5rem">Owner: <strong style="color:#fff">Lachhannagari Gangadhar Yadav</strong></p>
+  <div class="footer-links" style="margin-top:.5rem">
+    <p><a href="tel:+917680089494">📞 76800 89494</a> &nbsp;&nbsp; <a href="tel:+919347440055">📞 93474 40055</a></p>
+    <p style="margin-top:.4rem"><a href="mailto:lgrpackersandmovers76@gmail.com">✉️ lgrpackersandmovers76@gmail.com</a></p>
+  </div>
+  <div style="margin-top:1rem;display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
+    <a href="https://wa.me/917680089494" target="_blank" style="background:#25D366;color:#fff;padding:.4rem 1rem;border-radius:4px;text-decoration:none;font-size:.85rem;font-weight:700;">💬 WhatsApp 1</a>
+    <a href="https://wa.me/919347440055" target="_blank" style="background:#25D366;color:#fff;padding:.4rem 1rem;border-radius:4px;text-decoration:none;font-size:.85rem;font-weight:700;">💬 WhatsApp 2</a>
+  </div>
+  <p style="margin-top:1.2rem;font-size:.78rem;opacity:.6">&copy; 2024 LGR Packers &amp; Movers. All rights reserved.</p>
 </footer>
 
 <script>
