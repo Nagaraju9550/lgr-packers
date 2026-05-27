@@ -59,7 +59,7 @@
       min-height: 100vh;
       background: linear-gradient(135deg, var(--navy) 60%, var(--navy2) 100%);
       display: flex; align-items: center;
-      padding: 80px 5vw 40px;
+      padding: 100px 5vw 40px;
       position: relative;
       overflow: hidden;
     }
@@ -382,8 +382,8 @@
     <h1>LGR<br/><span>Packers &amp;</span><br/>Movers</h1>
     <p>Safe, fast &amp; affordable shifting across India.<br/>Your belongings — our responsibility.</p>
     <div class="hero-btns">
-      <a href="#contact" class="btn btn-primary">📞 Get Free Quote</a>
-      <a href="https://wa.me/917680089494" target="_blank" class="btn btn-ghost">💬 WhatsApp Us</a>
+      <a href="#contact" class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});return false;">📞 Get Free Quote</a>
+      <a href="https://wa.me/917680089494?text=Hello%20LGR%20Packers%2C%20I%20need%20a%20moving%20quote." class="btn btn-ghost">💬 WhatsApp Us</a>
     </div>
   </div>
 </section>
@@ -594,7 +594,9 @@
       `Name: ${name}\nPhone: ${phone}\nFrom: ${from}\nTo: ${to}\n` +
       `Service: ${service}\nDate: ${date}\nNotes: ${notes}\n\nPlease provide a free quote.`
     );
-    window.open(`https://wa.me/917680089494?text=${msg}`, '_blank');
+
+    // Use location.href for mobile compatibility (window.open is blocked on mobile)
+    window.location.href = `https://wa.me/917680089494?text=${msg}`;
   }
 
   // Smooth scroll for nav links on mobile
